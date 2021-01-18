@@ -1,0 +1,11 @@
+#!/bin/bash
+
+test -d data || mkdir data
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+python src/oscar_nominees.py data/films.csv
+python src/film_color.py data/films.csv data/film_color_data.csv
+python src/color_films_by_year.py data/film_color_data.csv color_films_by_year.png
