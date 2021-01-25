@@ -1,8 +1,6 @@
 """
 Scrape Wikipedia article of Academy Award nominees for Best Picture.
 """
-import os
-
 import pandas as pd
 
 
