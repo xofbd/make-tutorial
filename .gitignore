@@ -1,4 +1,7 @@
+.base
+.dev
 .env
+color_films_by_year.png
 __pycache__
 /data
 venv

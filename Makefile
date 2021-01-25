@@ -1,14 +1,16 @@
 SHELL = /bin/bash
 ACTIVATE_VENV = source venv/bin/activate
 INPUTS = $(wildcard requirements/*.in)
-REQS = $(patsubst requirements/%.in, requirements/%.txt, $(INPUTS))
+REQS = $(patsubst requirements/%.in,requirements/%.txt,$(INPUTS))
 OUTPUTS = .base .dev
 
 .PHONY: all
 all: clean-all color_films_by_year.png
 
-data/films.csv: | .base
-	test -d data || mkdir data
+data:
+	mkdir $@
+
+data/films.csv: | .base data
 	$(ACTIVATE_VENV) && python src/oscar_nominees.py $@
 
 data/film_color_data.csv: data/films.csv
@@ -47,10 +49,10 @@ clean-all: clean
 tests: test-lint test-unit
 
 test-unit: .dev
-	$(ACTIVATE_VENV) && pytest -s tests
+	-$(ACTIVATE_VENV) && pytest -s tests
 
 test-lint: .dev
-	$(ACTIVATE_VENV) && flake8 src
+	-$(ACTIVATE_VENV) && flake8 src
 
 # Requirements
 .PHONY: requirements
