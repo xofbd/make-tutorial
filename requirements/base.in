@@ -1,0 +1,6 @@
+-c pip-tools.txt
+lxml==4.6.2
+matplotlib==3.3.3
+pandas==1.2.0
+python-dotenv==0.15.0
+requests==2.25.1
