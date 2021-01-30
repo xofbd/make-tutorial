@@ -4,4 +4,5 @@
 color_films_by_year.png
 __pycache__
 /data
+src/deploy_plot.html
 venv

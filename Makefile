@@ -19,6 +19,10 @@ data/film_color_data.csv: data/films.csv
 color_films_by_year.png: data/film_color_data.csv
 	$(ACTIVATE_VENV) && python src/color_films_by_year.py $< $@
 
+.PHONY: deploy
+deploy: data/film_color_data.csv
+	$(ACTIVATE_VENV) && python src/deploy_plot.py $<
+
 # Virtual Environments
 venv: requirements/pip-tools.txt
 	python3 -m venv $@
@@ -43,7 +47,7 @@ clean:
 
 clean-all: clean
 	rm -rf data
-	rm -f color_films_by_year.png
+	rm -f color_films_by_year.png src/deploy_plot.html
 
 .PHONY: tests test-unit test-lint
 tests: test-lint test-unit
