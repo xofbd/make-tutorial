@@ -46,9 +46,31 @@ Here's a list of suggestions for additions and changes to the project. Some deal
 1. Tools such as [Pipenv](https://pipenv.pypa.io), [pip-tools](https://github.com/jazzband/pip-tools), and [Poetry](https://python-poetry.org) can help us separate packages needed for development and production and create deterministic builds. Currently, several packages listed in `requirements.txt` are only used for testing. How would you incorporate the usage of these tools in the `Makefile`?
 
 ### Makefile improvements
+1. Make sure you go through your `Makefile` and use special variables. In a recipe, `$@` is equal to the target, `$<` is the first dependency, and `$^` is equal to all the dependencies of the target.
+
+1. Is there anywhere you are repeating yourself? You can define a variable at the top of the `Makefile` and use it throughout. For example:
+
+1. Create a rule or rules that allow for unit testing and linting. Unit testing and linting can be run by, with the virtual environment activated, `pytest -s tests` and `flake8 src`, respectively.
+
 1. At the moment, the Python source file used to generate a particular file is **not** included as a prerequisite. Should it? What would be some pros and cons? How would you rewrite some of the recipes by considering the source file as a listed prerequisite?
 
 1. There are a two types of prerequisites, normal and order-only. Take a look at the documentation for [order-only prerequisites](https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html). Can you consider a place to use them in the current `Makefile`?
+
+## Useful tips
+
+1. By default, running `make` looks for a file named `Makefile`. To use a different file, use the `--file` option:
+   ```
+   make --file=Makefile-alt all
+   ```
+
+1. If you ever need to force the building of a target, you can use `-B` or `--always-make` option:
+   ```
+   make -B color_films_by_year.png
+   ```
+1. Sometimes it's nice to see what GNU Make will do rather than actually running the build. To have GNU Make do a "dry run" use the `--dry-run` option:
+   ```
+   make --dry-run color_films_by_year.png
+   ```
 
 ## Additional resources
 Here's a list of additional resources for GNU Make, ranging from a cheat sheet to the official documentation.
