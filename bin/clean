@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -rf venv data
+rm -f *.png
+find . | grep py.*cache.* | xargs rm -rf

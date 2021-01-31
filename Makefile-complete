@@ -22,8 +22,7 @@ data/color_films_by_year.png: data/film_color_data.csv
 # Utility
 .PHONY: clean
 clean:
-	rm -rf venv
-	find . | grep __pycache__ | xargs rm -rf
+	bin/clean
 
 .PHONY: tests test-unit test-lint
 tests: test-lint test-unit
