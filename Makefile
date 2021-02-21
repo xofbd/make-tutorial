@@ -1,8 +1,8 @@
 SHELL = /bin/bash
 ACTIVATE_VENV = source venv/bin/activate
-INPUTS = $(wildcard requirements/*.in)
-REQS = $(patsubst requirements/%.in,requirements/%.txt,$(INPUTS))
-OUTPUTS = .base .dev
+inputs = $(wildcard requirements/*.in)
+reqs = $(patsubst requirements/%.in,requirements/%.txt,$(inputs))
+outputs = .base .dev
 
 .PHONY: all
 all: clean-all color_films_by_year.png
@@ -43,7 +43,7 @@ venv: requirements/pip-tools.txt
 clean:
 	rm -rf venv
 	find . | grep __pycache__ | xargs rm -rf
-	rm -f $(OUTPUTS)
+	rm -f $(outputs)
 
 clean-all: clean
 	rm -rf data
@@ -60,7 +60,7 @@ test-lint: .dev
 
 # Requirements
 .PHONY: requirements
-requirements: $(REQS)
+requirements: $(reqs)
 
 requirements/%.txt: requirements/%.in | venv
 	$(ACTIVATE_VENV) && pip-compile $<
