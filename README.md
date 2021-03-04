@@ -77,6 +77,8 @@ Here's a list of additional resources for GNU Make, ranging from a cheat sheet t
 
 * [Software Carpentry](https://swcarpentry.github.io/make-novice/) has a nice tutorial that goes into more details about GNU Make. They start with the basics and cover important topics like pattern rules and functions.
 
+* A good, comprehensive [tutorial](https://makefiletutorial.com/) covering a wide range of important topics.
+
 * [Managing Projects with GNU Make](https://freecomputerbooks.com/Managing-Projects-with-GNU-Make.html) is a free book that takes a deep dive into the capabilities and power of GNU Make. While the book probably contains content that you'll never use, it's always good to see what is possible with GNU Make. You may want to look into this book once you've gotten a good handle on the basics of GNU Make.
 
 * A nice [cheat sheet](https://devhints.io/makefile) as a quick reference. Also, consider their other cheat sheets like their [Bash scripting cheat sheet](https://devhints.io/bash).
